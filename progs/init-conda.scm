@@ -37,10 +37,10 @@
   (cons (list :launch (conda-launcher "base"))
     (other-conda-launchers)))
 
-(plugin-configure conda
+(plugin-configure python 
   (:require (url-exists-in-path? "conda"))
   (:versions (conda-versions))
   ,@(conda-launchers)
   (:serializer ,python-serialize)
-  (:session "Conda")
+  (:session "Python")
   (:scripts "Python"))
