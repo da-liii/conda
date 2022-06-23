@@ -31,7 +31,10 @@
                  (python-entry)))
 
 (define (other-conda-launchers)
-  (map (lambda (name) (list :launch name (conda-launcher name))) (cdr (conda-versions))))
+  (map (lambda (name) (list :launch name (conda-launcher name)))
+       (filter
+         (lambda (x) (not (== x "base")))
+         (conda-versions))))
 
 (define (conda-launchers)
   (cons (list :launch (conda-launcher "base"))
